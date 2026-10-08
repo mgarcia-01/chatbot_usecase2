@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+#MISC
+*venv*
+data
+michael_settings
+archive
+
