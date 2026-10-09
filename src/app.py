@@ -37,7 +37,7 @@ class chatbotApp:
 CSV_FILE = "./data/red_bull_commercial_data.csv"
 
 # initialize the server
-#chatbot_server = server.chatbotServer(csv_file_path=CSV_FILE)
+
 chatbot_server = chatbotServer(csv_file_path=CSV_FILE)
 
 # run the app

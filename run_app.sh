@@ -15,7 +15,6 @@ podman machine start
 curl -fsSL https://ollama.com/install.sh | sh
 # this will only allow certain llama
 ollama pull tinyllama
-#ollama pull llama3.2
 # Run the chatbot
 #python src/reporting_chatbot.py
 python src/app.py

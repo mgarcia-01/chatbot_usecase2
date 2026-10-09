@@ -7,7 +7,8 @@ from langchain.chains.combine_documents import create_stuff_documents_chain as c
 from langchain.chains import create_retrieval_chain as crc
 
 class chatbotServer:
-    """Backend server managing data loading, embeddings, and LLM generation."""
+    """Backend server managing data loading, embeddings, and LLM generation.
+    """
 
     # TODO: modify the llm_model argument to accept a config or env variable in case a different model is selected
     def __init__(self, csv_file_path: str, llm_model: str = "tinyllama"):
@@ -54,8 +55,9 @@ class chatbotServer:
         # I setup my default system prompt. The system will use this for processing the semantic context of the input
         # TODO: setup this as an argument to provide the capability to define adhoc or via a config or env file.
 
+        # TODO: Follow-up questions are not consistent
         system_prompt = (
-            """You are a helpful financial assistant. Use the following pieces of retrieved context to answer a human with marketing profession. If you dont know the answer based on the context, just say you don't know. The answers should be concise.
+            """You are a helpful and friendly assistant. Use the following pieces of retrieved context to answer an analyst with marketing profession. If you dont know the answer based on the context, just say you don't know. Keep the responses brief and concise and respond as a summary.
             \n\n"""
             "Context:\n{context}"
         )

@@ -222,6 +222,7 @@ __marimo__/
 #MISC
 *venv*
 data
-michael_settings
+michaels_settings
 archive
 logs
+tests
