@@ -1,9 +1,12 @@
 CURWD="$PWD"
 LOG_FILE="$CURWD/logs/run_aioptimizer.log"
-exec > "$LOG_FILE" 2>&1
-# Define the logging function
+
+mkdir -p "$CURWD/logs"
+
+exec > >(tee "$LOG_FILE") 2>&1
+
 log_info() {
-    echo "[INFO] $(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+    echo "[INFO] $(date '+%Y-%m-%d %H:%M:%S') - $1"
 }
 . venv311/bin/activate
 python -m pip install -r requirements.txt
@@ -15,4 +18,4 @@ ollama pull tinyllama
 #ollama pull llama3.2
 # Run the chatbot
 #python src/reporting_chatbot.py
-python src/run_chatbot.py
+python src/app.py

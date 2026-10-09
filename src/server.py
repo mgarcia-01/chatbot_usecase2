@@ -1,12 +1,12 @@
 from langchain_community.document_loaders.csv_loader import CSVLoader
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings as hfe
 from langchain_community.vectorstores import FAISS
 from langchain_ollama import OllamaLLM
-from langchain_core.prompts import ChatPromptTemplate
-from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain.chains import create_retrieval_chain
+from langchain_core.prompts import ChatPromptTemplate as cpt
+from langchain.chains.combine_documents import create_stuff_documents_chain as csdc
+from langchain.chains import create_retrieval_chain as crc
 
-class ChatbotServer:
+class chatbotServer:
     """Backend server managing data loading, embeddings, and LLM generation."""
 
     # TODO: modify the llm_model argument to accept a config or env variable in case a different model is selected
@@ -40,7 +40,7 @@ class ChatbotServer:
         doc = loader.load()
 
         #print("Initializing embeddings and vector database...")
-        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        embeddings = hfe(model_name="all-MiniLM-L6-v2")
         # After initializing embeddings, we will get the vector stored after intializtion and add
         # the CSV file content to vector store
         vector_store = FAISS.from_documents(doc, embeddings)
@@ -62,13 +62,13 @@ class ChatbotServer:
         # Combine the input to the systems prompt for context
 
         # TODO: Check for issues from the system prompt
-        prompt = ChatPromptTemplate.from_messages([
+        prompt = cpt.from_messages([
             ("system", system_prompt),
             ("human", "{input}"),
         ])
 
-        question_answer_chain = create_stuff_documents_chain(llm, prompt)
-        self.rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+        question_answer_chain = csdc(llm, prompt)
+        self.rag_chain = crc(retriever, question_answer_chain)
 
     def query(self, user_input: str) -> str:
         """Processes a query through the RAG chain and returns the answer.
