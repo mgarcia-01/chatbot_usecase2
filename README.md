@@ -21,8 +21,6 @@ The root directory contains the requirements.txt and the run_app bash script to 
 Data is located via
 
 
-
-
 ### Design Decisions
 - **LLM choice**: [Why this one?]
 - **Prompt strategy**: [How do you feed context? What's your system prompt?]
