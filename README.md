@@ -2,14 +2,8 @@
 
 ### Setup
 [Instructions to install dependencies and run the app]
-For Database, download the container via Podman since no macos version is available.
 
-```bash
-podman pull container-registry.oracle.com/database/free:latest
-```
-
-Install ollama for macos. Then pull and run. Using tinyllama due to memory constraints.
-
+Install ollama for macos. Then pull and run. I am using tinyllama due to memory constraints. Change the version for different size models from ollama. 
 
 
 ```bash
@@ -18,10 +12,14 @@ ollama pull tinyllama
 ollama serve
 ```
 
-See the directory michaels_settings. I have saved the configuration file from a previous test.
-
 ### How It Works
 [Explain your architecture: how you load data, structure prompts, call the LLM, return results]
+
+The core architecture consists of a application module, a server module, and a main module to run the entire application.
+
+The root directory contains the requirements.txt and the run_app bash script to intiate podman (for MACOS), download models, run ollama, activate the python virtual environment, and run the chatbot application. 
+
+
 
 
 ### Design Decisions
