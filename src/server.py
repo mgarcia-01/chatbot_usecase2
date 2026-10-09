@@ -32,9 +32,8 @@ class ChatbotServer:
         llm = OllamaLLM(model=self.llm_model)
 
         system_prompt = (
-            "You are a helpful data assistant. Use the following pieces of retrieved "
-            "context to answer the user's question. If you don't know the answer based "
-            "on the context, just say that you don't know. Keep the answer concise.\n\n"
+            """You are a helpful financial assistant. Use the following pieces of retrieved context to answer a human with marketing profession. If you dont know the answer based on the context, just say you don't know. The answers should be concise.
+            \n\n"""
             "Context:\n{context}"
         )
         prompt = ChatPromptTemplate.from_messages([
