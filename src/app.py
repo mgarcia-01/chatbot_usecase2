@@ -1,23 +1,27 @@
 from server import ChatbotServer
 class ChatbotApp:
-    """Frontend application managing the user interface loop."""
+    """ Runs the terminal or user interface for the chatbot
+    """
     
     def __init__(self, server: ChatbotServer):
         self.server = server
 
     def run(self):
-        """Starts the chat interface loop."""
-        print("\nReady! Chat with your CSV data (Type 'exit' to quit).")
+        """Intiate the interface
+        """
+        
+        print("\nWelcome to Red Bull Commercial Intelligence Agent!")    
+        print("\nChat with your financial and commercial data (Type 'exit' to quit). CTRL + C works also")
         
         while True:
             try:
-                user_input = input("\nYou: ").strip()
+                user_input = input("\nUser Input: ").strip()
                 
                 if not user_input:
                     continue
                     
                 if user_input.lower() in ['exit', 'quit']:
-                    print("Goodbye!")
+                    print("Hasta la vista!")
                     break
 
                 # Send the query to the backend server
@@ -25,4 +29,4 @@ class ChatbotApp:
                 print(f"ollama: {answer}")
                 
             except Exception as e:
-                print(f"\nAn error occurred: {e}")
+                print(f"\n Encountered an error: {e}")
