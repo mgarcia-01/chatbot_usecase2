@@ -24,7 +24,9 @@ class ChatbotServer:
         print("Initializing embeddings and vector database...")
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         vector_store = FAISS.from_documents(docs, embeddings)
-        retriever = vector_store.as_retriever(search_kwargs={"k": 3})
+
+        #defining
+        retriever = vector_store.as_retriever(search_kwargs={"search_type": "similarity", "k": 5, "fetch_k": 20})
 
         print(f"Connecting to local model ({self.llm_model})...")
         llm = OllamaLLM(model=self.llm_model)
