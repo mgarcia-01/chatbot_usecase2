@@ -19,6 +19,7 @@ The core architecture consists of a application module, a server module, and a m
 
 The root directory contains the requirements.txt and the run_app bash script to intiate podman (for MACOS), download models, run ollama, activate the python virtual environment, and run the chatbot application.
 
+```
 Project Structure
 ├── data
 │   └── red_bull_commercial_data.csv
@@ -34,6 +35,7 @@ Project Structure
 ├── README.md
 ├── requirements.txt
 └── run_app.sh
+```
 
 
 
