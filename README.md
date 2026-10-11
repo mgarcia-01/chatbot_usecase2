@@ -11,12 +11,29 @@ ollama pull tinyllama
 ollama serve
 ```
 
+The root directory contains the requirements.txt and the run_app.sh script to intiate podman (for MACOS), download models, run ollama, activate the python virtual environment, and run the chatbot application.
+
 ### How It Works
 
 The core architecture consists of a application module, a server module, and a main module to run the entire application.
 
 The root directory contains the requirements.txt and the run_app bash script to intiate podman (for MACOS), download models, run ollama, activate the python virtual environment, and run the chatbot application.
 
+Project Structure
+├── data
+│   └── red_bull_commercial_data.csv
+├── logs
+│   └── run_aioptimizer.log
+├── src
+│   ├── app.py
+│   └── server.py
+├── tests
+├── .gitignore
+├── CASE_STUDY_2_BRIEF.md
+├── LICENSE
+├── README.md
+├── requirements.txt
+└── run_app.sh
 
 
 
